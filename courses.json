@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Anatomy & Embryology Course",
+    "description": "This course is designed to simplify anatomy and embryology for 1st, 2nd and 3rd year medical students.",
+    "modules": [
+      "General Anatomy",
+      "Embryology",
+      "MSK",
+      "CVS",
+      "Respiratory",
+      "CNS",
+      "Neuroanatomy",
+      "GIT",
+      "Urogenital",
+      "Reproductive",
+      "Eye",
+      "ENT"
+    ],
+    "referenceBooks": [
+      "Gray's Anatomy",
+      "Netter Atlas",
+      "Moore Anatomy",
+      "Kenhub"
+    ],
+    "previewVideoLink": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "price": "To be announced",
+    "status": "Open for registration",
+    "image": "/images/course-placeholder.svg"
+  }
+]
