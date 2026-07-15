@@ -2,6 +2,8 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  GraduationCap,
+  MapPin,
   MessageCircle,
   PlayCircle,
   Stethoscope,
@@ -35,16 +37,23 @@ const highlights = [
   },
 ];
 
+const instructorBio = [
+  "I am Mahmoud Fadl, a fourth-year medical student at Nahda University with a strong passion for both medicine and medical education. My goal is to make Anatomy and Embryology easier to understand by presenting complex concepts in a clear, structured, and clinically relevant way.",
+  "As a top-performing student, I have dedicated myself to helping fellow medical students build a solid foundation in anatomy through simplified explanations, visual learning techniques, and practical clinical correlations. I believe that understanding anatomy should be engaging, interactive, and directly connected to real-world medical practice.",
+  "Through Medical Academy, I aim to provide high-quality educational content that supports students throughout their medical journey and helps them achieve academic excellence with confidence.",
+];
+
 export default function HomePage() {
   const course = getPrimaryCourse();
 
   return (
     <>
+      {/* ── Hero Section ── */}
       <section className="bg-background px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="mb-4 inline-flex rounded-md border border-border bg-card px-4 py-2 text-sm font-semibold text-primary">
-              Anatomy & Embryology for medical students
+              Anatomy &amp; Embryology for medical students
             </p>
             <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Medical Academy
@@ -70,38 +79,92 @@ export default function HomePage() {
           <Card className="overflow-hidden">
             <div className="relative aspect-[4/3] bg-primary/10">
               <Image
-                src="/images/instructor-placeholder.svg"
-                alt="Instructor photo placeholder"
+                src="/images/instructor.jpg"
+                alt="Mahmoud Fadl – Instructor at Medical Academy"
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </Card>
         </div>
       </section>
 
-      <MotionSection className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      {/* ── About Instructor Section ── */}
+      <MotionSection className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="About"
-            title="About the instructor"
-            description="The instructor teaches Anatomy and Embryology with a simple, structured approach that helps students understand, revise, and retain important concepts."
+            title="About the Instructor"
           />
-          <Card>
-            <CardContent className="grid gap-4 p-6 sm:grid-cols-2">
-              {whyChoose.map((item) => (
-                <div key={item} className="flex gap-3">
-                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                  <p className="text-sm leading-6 text-muted">{item}</p>
+
+          {/* Responsive card: image above on mobile, image right on desktop */}
+          <div className="mt-12 flex flex-col gap-10 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-10 lg:flex-row lg:items-center lg:gap-14">
+
+            {/* ── Text side ── */}
+            <div className="flex-1 order-2 lg:order-1">
+              {/* Name & title */}
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                  Mahmoud Fadl
+                </h2>
+                <div className="mt-3 flex flex-col gap-1.5">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    <GraduationCap className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    Fourth-Year Medical Student
+                  </span>
+                  <span className="inline-flex items-center gap-2 text-sm text-muted">
+                    <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    Nahda University
+                  </span>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
+              </div>
+
+              {/* Bio paragraphs */}
+              <div className="space-y-4">
+                {instructorBio.map((paragraph, index) => (
+                  <p key={index} className="text-base leading-7 text-muted">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              {/* Why choose bullets */}
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {whyChoose.map((item) => (
+                  <div key={item} className="flex gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                    <p className="text-sm leading-6 text-muted">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Image side ── */}
+            <div className="order-1 lg:order-2 lg:w-72 xl:w-80 shrink-0">
+              <div className="relative mx-auto w-56 sm:w-64 lg:w-full">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4]">
+                  <Image
+                    src="/images/instructor.jpg"
+                    alt="Mahmoud Fadl – Medical Academy instructor"
+                    fill
+                    sizes="(min-width: 1024px) 288px, 256px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                {/* Decorative badge */}
+                <div className="absolute -bottom-3 -left-3 rounded-xl border border-border bg-background px-3 py-2 shadow-soft">
+                  <p className="text-xs font-bold text-primary">Nahda University</p>
+                  <p className="text-xs text-muted">4th Year · Medicine</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </MotionSection>
 
+      {/* ── Why Choose Section ── */}
       <MotionSection className="bg-card px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
@@ -118,6 +181,7 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
+      {/* ── Student Journey Section ── */}
       <MotionSection className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
@@ -140,6 +204,7 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
+      {/* ── FAQ Section ── */}
       <MotionSection className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <SectionHeading centered eyebrow="FAQ" title="Common questions" />
@@ -156,13 +221,14 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
+      {/* ── CTA Banner ── */}
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl rounded-lg border border-border bg-primary p-8 text-primary-foreground shadow-soft md:p-12">
           <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
             <div>
               <h2 className="text-3xl font-bold">Start learning with Medical Academy</h2>
               <p className="mt-3 max-w-2xl text-primary-foreground/85">
-                Join the Anatomy & Embryology course and study with a clear,
+                Join the Anatomy &amp; Embryology course and study with a clear,
                 beginner-friendly plan.
               </p>
             </div>
